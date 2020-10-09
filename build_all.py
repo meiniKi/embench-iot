@@ -488,6 +488,9 @@ def compile_file(f_root, srcdir, bindir, suffix='.c'):
                 check=True
             )
 
+            log.debug(res.stdout.decode('utf-8'))
+            log.debug(res.stderr.decode('utf-8'))
+
         except subprocess.TimeoutExpired as error:
             log.warning(
                 'Warning: Compilation of {root}{suff} from source directory {src} to binary directory {bin} timed out'
@@ -715,8 +718,10 @@ def link_benchmark(bench):
         log.debug(error.stderr.decode('utf-8'))
 
     except subprocess.CalledProcessError as error:
-        log.warning(f'Warning: Link of benchmark "{bench}" failed with' +
-                    f' with return code {error.returncode}')
+        log.warning(
+            f'Warning: linking of {bench} failed ' +
+            f'with return code {error.returncode}'
+        )
         log.debug('Command was:')
         log.debug(arglist_to_str(arglist))
         succeeded = False
