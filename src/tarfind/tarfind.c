@@ -20,9 +20,7 @@
 #define N_SEARCHES 5
 
 /* BEEBS heap is just an array */
-/* 8995 = sizeof(tar_header_t) * ARCHIVE_FILES */
-#define roundup(d, u) ((((d)+(u))/(u))*(u))
-#define HEAP_SIZE roundup(8995, sizeof(void *))
+#define HEAP_SIZE 16384
 static char heap[HEAP_SIZE];
 
 void
