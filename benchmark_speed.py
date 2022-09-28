@@ -220,6 +220,8 @@ def benchmark_speed(bench, target_args):
             if res.returncode != 0:
                 log.warning(f'Warning: Run of {bench} failed.')
                 succeeded = False
+            else:
+                log.info(f'Info: Run of {bench} succeeded')
         except subprocess.TimeoutExpired:
             log.warning(f'Warning: Run of {bench} timed out.')
             succeeded = False
