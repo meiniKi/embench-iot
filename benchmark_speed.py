@@ -25,6 +25,7 @@ import subprocess
 import sys
 import threading
 import queue
+import shutil
 
 from json import loads
 
@@ -235,6 +236,9 @@ def benchmark_speed(bench, target_args):
             res.stdout.decode('utf-8'), res.stderr.decode('utf-8')
         )
         succeeded = exec_time > 0
+        
+
+    shutil.copytree(f"{gp['bd']}/../gateware", f"{gp['bd']}/../gateware_{bench}")
 
     if succeeded:
         return exec_time
